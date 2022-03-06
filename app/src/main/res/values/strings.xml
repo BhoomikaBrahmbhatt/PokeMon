@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Pokémon</string>
+    <string name="error">Something went wrong, Please try again!!</string>
+    <string name="network_error">Network is not available</string>
+    <string name="network_error_offline">Network is not available. Offline data showing.</string>
+    <string name="data_load">All Pokemon shown!!</string>
+    <string name="height">"HT: "</string>
+    <string name="weight">"WT: "</string>
+    <string name="cm">" cm"</string>
+    <string name="kg">" kg"</string>
+
+
+    <dimen name="dimen_four_dp">4dp</dimen>
+    <dimen name="dimen_six_dp">6dp</dimen>
+    <dimen name="dimen_eight_dp">8dp</dimen>
+    <dimen name="dimen_one_sixty_dp">160dp</dimen>
+    <dimen name="fourty_dp">40dp</dimen>
+</resources>
