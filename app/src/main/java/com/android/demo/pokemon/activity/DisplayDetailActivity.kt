@@ -69,7 +69,7 @@ class DisplayDetailActivity : AppCompatActivity() {
                         p2: Target<Drawable>?,
                         p3: Boolean
                     ): Boolean {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        return false
                     }
 
                     override fun onResourceReady(
