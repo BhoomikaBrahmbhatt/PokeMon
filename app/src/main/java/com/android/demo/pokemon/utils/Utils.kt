@@ -11,12 +11,12 @@ object Utils {
     const val POKEMON_URL: String = "PokemonUrl"
     infix fun <T> Boolean.then(value: T?) = TernaryExpression(this, value)
 
-    class TernaryExpression<out T>(val flag: Boolean, val truly: T?) {
-        infix fun <T> or(falsy: T?) = if (flag) truly else falsy
+    class TernaryExpression<out T>(private val flag: Boolean, val truly: T?) {
+        infix fun <T> or(falsely: T?) = if (flag) truly else falsely
     }
 
     fun getStringCapitalise(string: String): String {
-        return string?.replaceFirstChar { it.uppercase() }
+        return string.replaceFirstChar { it.uppercase() }
     }
 
     fun isOnline(context: Context): Boolean {
