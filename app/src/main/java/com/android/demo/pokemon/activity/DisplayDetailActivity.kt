@@ -23,7 +23,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
 class DisplayDetailActivity : AppCompatActivity() {
-    private var binding: ActivityPokemonDetailBinding? = null
+    private lateinit var binding: ActivityPokemonDetailBinding
     lateinit var viewModel: MainViewModel
     private val retrofitService = RetrofitService.getInstance()
     private lateinit var callUrl: String
@@ -32,7 +32,7 @@ class DisplayDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pokemon_detail)
 
         binding = ActivityPokemonDetailBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
 
         supportActionBar?.apply {
             // show back button on toolbar
@@ -51,11 +51,11 @@ class DisplayDetailActivity : AppCompatActivity() {
         viewModel.characterDetail.observe(this, Observer { modelPokemondetail ->
             val name = Utils.getStringCapitalise(modelPokemondetail.name!!)
 
-            binding!!.textName.text = name
+            binding.textName.text = name
             val height = modelPokemondetail.height?.times(10).toString() // as its in decimetre
             val weight = modelPokemondetail.weight?.div(10).toString() // as its in hectogram
-            binding!!.textHeight.text = height.plus(getString(R.string.cm))
-            binding!!.textWeight.text = weight.plus(getString(R.string.kg))
+            binding.textHeight.text = height.plus(getString(R.string.cm))
+            binding.textWeight.text = weight.plus(getString(R.string.kg))
             val list: List<Types> = modelPokemondetail.types
             list.forEachIndexed { index, types ->
                 setCustomTextViewforTypes(index, types)
@@ -93,7 +93,7 @@ class DisplayDetailActivity : AppCompatActivity() {
                 }
 
             ).into(
-                binding!!.imagePokemon
+                binding.imagePokemon
             )
         })
         viewModel.errorMessageDetail.observe(this, Observer {
@@ -122,7 +122,7 @@ class DisplayDetailActivity : AppCompatActivity() {
             else
                 layoutParams.setMargins(0, 0, 0, 0)
             textViewTypes.text = Utils.getStringCapitalise(types.type!!.name!!)
-            binding!!.linearTypes.addView(textViewTypes, layoutParams)
+            binding.linearTypes.addView(textViewTypes, layoutParams)
         } catch (ex: Exception) {
             ex.toString()
         }

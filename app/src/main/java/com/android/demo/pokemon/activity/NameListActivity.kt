@@ -15,7 +15,7 @@ import com.android.demo.pokemon.mvvm.RetrofitService
 import com.android.demo.pokemon.utils.Utils
 
 class NameListActivity : AppCompatActivity() {
-    private var binding: ActivityPokemonNameBinding? = null
+    private lateinit var binding: ActivityPokemonNameBinding
     private val limit = 200
     var offset = 0
     var total = 0
@@ -30,14 +30,14 @@ class NameListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pokemon_name)
 
         binding = ActivityPokemonNameBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(
             this,
             MainModelFactory(MainRepository(retrofitService))
         ).get(MainViewModel::class.java)
 
-        binding!!.recyclerview.adapter = adapter
+        binding.recyclerview.adapter = adapter
         viewModel.charactersList.observe(this, Observer {
             total = it.count!!
             adapter.setCharacterList(it.results)
@@ -49,7 +49,7 @@ class NameListActivity : AppCompatActivity() {
             Utils.showToast(this,getString(R.string.error))
         })
         callCharacters(true, offset)
-        binding!!.recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (!recyclerView.canScrollVertically(1) && !loading) {
